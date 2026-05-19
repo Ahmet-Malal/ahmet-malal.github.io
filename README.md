@@ -1,4 +1,4 @@
-## Current Setup / Interests
+## Current Setup
 
 I enjoy clean, dark and minimal interfaces with a terminal-inspired aesthetic.  
 Lately.
