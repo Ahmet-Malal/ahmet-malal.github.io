@@ -20,8 +20,8 @@ Recently I have been experimenting with Arch-based systems, Hyprland, GitHub Pag
 
 ## Links
 
-- Website: [bhcgo.github.io](https://bhcgo.github.io/)
-- GitHub: [@bhcgo](https://github.com/bhcgo)
+- Website: > [bhcgo.github.io](https://bhcgo.github.io/)
+- GitHub: > [@bhcgo](https://github.com/bhcgo)
 
 ## Notes
 
