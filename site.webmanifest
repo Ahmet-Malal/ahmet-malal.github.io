@@ -1,0 +1,16 @@
+{
+  "name": "bhcgo",
+  "short_name": "bhcgo",
+  "description": "Minimal personal portfolio of Ahmet Malal, also known as bhcgo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#010101",
+  "theme_color": "#010101",
+  "icons": [
+    {
+      "src": "assets/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

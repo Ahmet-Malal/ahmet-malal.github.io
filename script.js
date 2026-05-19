@@ -1,10 +1,10 @@
 const $ = selector => document.querySelectorAll(selector);
 const root = document.documentElement;
 const canvas = document.getElementById("bg-canvas");
-const ctx = canvas.getContext("2d");
+const ctx = canvas ? canvas.getContext("2d") : null;
 const btns = $("[data-lang]");
 const faviconLink = document.getElementById("favicon");
-const defaultPageTitle = "bhcgo";
+const defaultPageTitle = "bhcgo | Ahmet Malal";
 const tabIcons = {
   active: "assets/favicon.ico",
   hidden: "assets/favicon-d.ico"
@@ -17,7 +17,7 @@ const profileMedia = {
 };
 const translations = {
   tr: {
-    pageTitle: "bhcgo",
+    pageTitle: "bhcgo | Ahmet Malal",
     systemClosedTitle: "system offline...",
     archive: "arşivim",
     contact: "iletişim",
@@ -44,17 +44,17 @@ const translations = {
     linkedinAria: "LinkedIn profili",
     profileCardAria: "Profil kart\u0131",
     profileLabel: "profil",
-    profileCopy: "Sade public profil. Ki\u015fisel detaylar bilin\u00e7li olarak gizli tutulur.",
+    profileCopy: "Sade public profil. Projeler, notlar ve iletişim linkleri minimal tutulur.",
     alias: "rumuz",
-    test: "test",
+    profileFocusLabel: "odak",
     source: "kaynak",
     tagsAria: "Etiketler",
-    openGithub: "proje a\u00e7",
+    openGithub: "GitHub aç",
     windowClose: "Pencereyi kapat"
   },
 
   en: {
-    pageTitle: "bhcgo",
+    pageTitle: "bhcgo | Ahmet Malal",
     systemClosedTitle: "system offline...",
     archive: "my.archive",
     contact: "contact",
@@ -81,12 +81,12 @@ const translations = {
     linkedinAria: "LinkedIn profile",
     profileCardAria: "Profile card",
     profileLabel: "profile",
-    profileCopy: "Simple public profile. Personal details are intentionally kept private.",
+    profileCopy: "Simple public profile. Projects, notes, and contact links stay minimal.",
     alias: "alias",
-    test: "test",
+    profileFocusLabel: "focus",
     source: "source",
     tagsAria: "Tags",
-    openGithub: "open project",
+    openGithub: "open GitHub",
     windowClose: "Close window"
   }
 };
@@ -501,9 +501,9 @@ async function initProfileMedia(){
 initProfileMedia();
 
 try{
-  setLang(localStorage.getItem("site-language") || "tr");
+  setLang(localStorage.getItem("site-language") || "en");
 }catch{
-  setLang("tr");
+  setLang("en");
 }
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -523,6 +523,8 @@ const pointer = {
 };
 
 function resizeCanvas(){
+  if(!canvas || !ctx) return;
+
   dpr = Math.min(window.devicePixelRatio || 1, 2);
   width = window.innerWidth;
   height = window.innerHeight;
@@ -540,10 +542,9 @@ function resizeCanvas(){
 function createParticles(){
   const area = width * height;
 
-  const count = Math.min(
-    190,
-    Math.max(78, Math.floor(area / 8500))
-  );
+  const count = width < 720
+    ? Math.min(90, Math.max(42, Math.floor(area / 11000)))
+    : Math.min(190, Math.max(78, Math.floor(area / 8500)));
 
   particles = Array.from({length: count}, () => ({
     x: Math.random() * width,
@@ -561,6 +562,8 @@ function setPointer(x, y, active = true){
   pointer.active = active;
 }
 function draw(){
+  if(!ctx) return;
+
   pointer.x += (pointer.tx - pointer.x) * 0.08;
   pointer.y += (pointer.ty - pointer.y) * 0.08;
 
@@ -623,7 +626,7 @@ function drawLines(){
 }
 
 function initBackground(){
-  if(reducedMotion) return;
+  if(reducedMotion || !canvas || !ctx) return;
 
   resizeCanvas();
   setPointer(width * 0.5, height * 0.5, false);
