@@ -5,7 +5,7 @@
 
 Built with help from  
 [OpenAI ChatGPT](https://chatgpt.com),  
-[Claude](https://claude.ai),  
+[Anthropic Claude](https://claude.ai),  
 [Google Gemini](https://gemini.google.com).
 
 > Portfolio: https://bhcgo.github.io/
