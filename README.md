@@ -1,13 +1,11 @@
-## Current Setup
-
-I enjoy clean, dark and minimal interfaces with a terminal-inspired aesthetic.  
-Lately.
+> This project is licensed under the MIT License.  
+> You are free to use, modify and distribute it with attribution.
 
 ## Resources
 
-Built with help from 
-[OpenAI ChatGPT](https://chatgpt.com), 
-[Claude](https://claude.ai),
+Built with help from  
+[OpenAI ChatGPT](https://chatgpt.com),  
+[Claude](https://claude.ai),  
 [Google Gemini](https://gemini.google.com).
 
 > Portfolio: https://bhcgo.github.io/
