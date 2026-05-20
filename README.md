@@ -8,4 +8,4 @@ Built with help from
 [Anthropic Claude](https://claude.ai),  
 [Google Gemini](https://gemini.google.com).
 
-> Portfolio: https://bhcgo.github.io/
+> Portfolio: https://ahmet-malal.github.io/
