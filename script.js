@@ -4,7 +4,7 @@ const canvas = document.getElementById("bg-canvas");
 const ctx = canvas ? canvas.getContext("2d") : null;
 const btns = $("[data-lang]");
 const faviconLink = document.getElementById("favicon");
-const defaultPageTitle = "bhcgo | Ahmet Malal";
+const defaultPageTitle = "Ahmet";
 const tabIcons = {
   active: "assets/favicon.ico",
   hidden: "assets/favicon-d.ico"
@@ -17,7 +17,7 @@ const profileMedia = {
 };
 const translations = {
   tr: {
-    pageTitle: "bhcgo | Ahmet Malal",
+    pageTitle: "Ahmet",
     systemClosedTitle: "system offline...",
     archive: "arşivim",
     contact: "iletişim",
@@ -45,7 +45,7 @@ const translations = {
     profileCardAria: "Profil kart\u0131",
     profileLabel: "profil",
     profileCopy: "Sade public profil. Projeler, notlar ve iletişim linkleri minimal tutulur.",
-    alias: "rumuz",
+    alias: "isim",
     profileFocusLabel: "odak",
     source: "kaynak",
     tagsAria: "Etiketler",
@@ -54,7 +54,7 @@ const translations = {
   },
 
   en: {
-    pageTitle: "bhcgo | Ahmet Malal",
+    pageTitle: "Ahmet",
     systemClosedTitle: "system offline...",
     archive: "my.archive",
     contact: "contact",
@@ -82,7 +82,7 @@ const translations = {
     profileCardAria: "Profile card",
     profileLabel: "profile",
     profileCopy: "Simple public profile. Projects, notes, and contact links stay minimal.",
-    alias: "alias",
+    alias: "name",
     profileFocusLabel: "focus",
     source: "source",
     tagsAria: "Tags",
@@ -173,16 +173,16 @@ const windowData = {
   }
 };
 
-function getCurrentLang(){
+function getCurrentLang() {
   return document.documentElement.lang === "en" ? "en" : "tr";
 }
 
-function setTabIcon(mode){
-  if(!faviconLink) return;
+function setTabIcon(mode) {
+  if (!faviconLink) return;
   faviconLink.href = tabIcons[mode] || tabIcons.active;
 }
 
-function syncTabState(){
+function syncTabState() {
   const lang = getCurrentLang();
   const data = translations[lang] || translations.tr;
   const isHidden = document.hidden;
@@ -198,7 +198,7 @@ document.addEventListener("visibilitychange", syncTabState);
 window.addEventListener("focus", syncTabState);
 window.addEventListener("blur", syncTabState);
 
-function setLang(lang){
+function setLang(lang) {
   const data = translations[lang] || translations.tr;
 
   document.documentElement.lang = lang;
@@ -221,11 +221,11 @@ function setLang(lang){
     btn.setAttribute("aria-pressed", active);
   });
 
-  try{
+  try {
     localStorage.setItem("site-language", lang);
-  }catch{}
+  } catch { }
 
-  if(activeWindow){
+  if (activeWindow) {
     renderWindow(activeWindow);
   }
 
@@ -236,17 +236,17 @@ btns.forEach(btn => {
   btn.addEventListener("click", () => setLang(btn.dataset.lang));
 });
 
-function renderWindow(type){
+function renderWindow(type) {
   const lang = document.documentElement.lang || "tr";
   const data = (windowData[lang] && windowData[lang][type]) || windowData.tr[type];
-  if(!data || !windowTitle || !windowCopy || !windowList) return;
+  if (!data || !windowTitle || !windowCopy || !windowList) return;
 
   windowTitle.textContent = data.title;
   windowCopy.textContent = data.copy;
   windowCopy.hidden = !data.copy;
   windowList.textContent = "";
 
-  if(data.sections){
+  if (data.sections) {
     data.sections.forEach(section => {
       const sectionEl = document.createElement("section");
       const title = document.createElement("h3");
@@ -254,12 +254,12 @@ function renderWindow(type){
 
       sectionEl.className = "window-section";
 
-      if(section.title && !duplicateTitle){
+      if (section.title && !duplicateTitle) {
         title.textContent = section.title;
         sectionEl.append(title);
       }
 
-      if(section.list){
+      if (section.list) {
         const list = document.createElement("ul");
 
         section.list.forEach(value => {
@@ -271,7 +271,7 @@ function renderWindow(type){
         sectionEl.append(list);
       }
 
-      if(section.tags){
+      if (section.tags) {
         const badges = document.createElement("div");
 
         badges.className = "badge-grid";
@@ -306,10 +306,10 @@ function renderWindow(type){
   });
 }
 
-function openWindow(type){
-  if(!siteWindow || !windowPanel) return;
+function openWindow(type) {
+  if (!siteWindow || !windowPanel) return;
 
-  if(windowTimer){
+  if (windowTimer) {
     window.clearTimeout(windowTimer);
     windowTimer = null;
   }
@@ -321,11 +321,11 @@ function openWindow(type){
   window.requestAnimationFrame(() => {
     siteWindow.classList.add("is-open");
   });
-  windowPanel.focus({preventScroll:true});
+  windowPanel.focus({ preventScroll: true });
 }
 
-function closeWindow(){
-  if(!siteWindow) return;
+function closeWindow() {
+  if (!siteWindow) return;
 
   siteWindow.classList.remove("is-open");
   activeWindow = null;
@@ -349,39 +349,39 @@ $("[data-window-close]").forEach(closeButton => {
 });
 
 window.addEventListener("keydown", event => {
-  if(event.key === "Escape" && activeWindow){
+  if (event.key === "Escape" && activeWindow) {
     closeWindow();
   }
 });
 
 
-function hexToRgb(hex){
+function hexToRgb(hex) {
   const clean = hex.replace("#", "").trim();
   const full = clean.length === 3 ? clean.split("").map(x => x + x).join("") : clean;
   const num = Number.parseInt(full, 16);
 
-  if(Number.isNaN(num)){
-    return {r:111, g:124, b:255};
+  if (Number.isNaN(num)) {
+    return { r: 111, g: 124, b: 255 };
   }
 
   return {
-    r:(num >> 16) & 255,
-    g:(num >> 8) & 255,
-    b:num & 255
+    r: (num >> 16) & 255,
+    g: (num >> 8) & 255,
+    b: num & 255
   };
 }
 
-function rgbToHex(r, g, b){
+function rgbToHex(r, g, b) {
   return `#${[r, g, b].map(value => {
     return Math.max(0, Math.min(255, Math.round(value))).toString(16).padStart(2, "0");
   }).join("")}`;
 }
 
-function colorFromText(text){
+function colorFromText(text) {
   let hash = 0;
-  const source = text || "bhcgo";
+  const source = text || "Ahmet";
 
-  for(let i = 0; i < source.length; i++){
+  for (let i = 0; i < source.length; i++) {
     hash = source.charCodeAt(i) + ((hash << 5) - hash);
   }
 
@@ -397,26 +397,26 @@ function colorFromText(text){
   let g = 0;
   let b = 0;
 
-  if(hue < 60) [r, g, b] = [c, x, 0];
-  else if(hue < 120) [r, g, b] = [x, c, 0];
-  else if(hue < 180) [r, g, b] = [0, c, x];
-  else if(hue < 240) [r, g, b] = [0, x, c];
-  else if(hue < 300) [r, g, b] = [x, 0, c];
-  else [r, g, b] = [c, 0, x];
+  if (hue < 60) [r, g, b] = [c, x, 0];
+  else if (hue < 120) [r, g, b] = [x, c, 0];
+  else if (hue < 180) [r, g, b] = [0, c, x];
+  else if (hue < 240) [r, g, b] = [0, x, c];
+  else if (hue < 300) [r, g, b] = [x, 0, c];
+  else[r, g, b] = [c, 0, x];
 
   return rgbToHex((r + m) * 255, (g + m) * 255, (b + m) * 255);
 }
 
-function setProfileAccent(card, hex){
+function setProfileAccent(card, hex) {
   const rgb = hexToRgb(hex);
 
   card.style.setProperty("--profile-accent", hex);
   card.style.setProperty("--profile-accent-rgb", `${rgb.r},${rgb.g},${rgb.b}`);
 }
 
-function getAverageImageColor(src){
+function getAverageImageColor(src) {
   return new Promise(resolve => {
-    if(!src){
+    if (!src) {
       resolve(null);
       return;
     }
@@ -425,10 +425,10 @@ function getAverageImageColor(src){
     img.crossOrigin = "anonymous";
 
     img.onload = () => {
-      try{
+      try {
         const sample = document.createElement("canvas");
         const size = 24;
-        const sampleCtx = sample.getContext("2d", {willReadFrequently:true});
+        const sampleCtx = sample.getContext("2d", { willReadFrequently: true });
 
         sample.width = size;
         sample.height = size;
@@ -440,10 +440,10 @@ function getAverageImageColor(src){
         let b = 0;
         let count = 0;
 
-        for(let i = 0; i < pixels.length; i += 4){
+        for (let i = 0; i < pixels.length; i += 4) {
           const alpha = pixels[i + 3];
 
-          if(alpha < 40) continue;
+          if (alpha < 40) continue;
 
           r += pixels[i];
           g += pixels[i + 1];
@@ -451,13 +451,13 @@ function getAverageImageColor(src){
           count++;
         }
 
-        if(!count){
+        if (!count) {
           resolve(null);
           return;
         }
 
         resolve(rgbToHex(r / count, g / count, b / count));
-      }catch{
+      } catch {
         resolve(null);
       }
     };
@@ -467,42 +467,42 @@ function getAverageImageColor(src){
   });
 }
 
-async function initProfileMedia(){
+async function initProfileMedia() {
   const card = document.querySelector("[data-profile-card]");
   const avatar = document.querySelector("[data-profile-avatar]");
   const avatarImg = document.querySelector("[data-profile-gif]");
   const banner = document.querySelector("[data-profile-banner]");
   const bannerImg = document.querySelector("[data-profile-banner-img]");
 
-  if(!card || !avatar || !avatarImg || !banner || !bannerImg) return;
+  if (!card || !avatar || !avatarImg || !banner || !bannerImg) return;
 
-  const fallbackHex = colorFromText("bhcgo");
+  const fallbackHex = colorFromText("Ahmet");
   setProfileAccent(card, fallbackHex);
 
-  if(profileMedia.gif){
+  if (profileMedia.gif) {
     avatarImg.src = profileMedia.gif;
     avatarImg.addEventListener("load", () => {
       avatar.classList.add("has-media");
-    }, {once:true});
+    }, { once: true });
 
     const imageHex = await getAverageImageColor(profileMedia.gif);
     setProfileAccent(card, imageHex || fallbackHex);
   }
 
-  if(profileMedia.banner){
+  if (profileMedia.banner) {
     bannerImg.src = profileMedia.banner;
     bannerImg.addEventListener("load", () => {
       banner.classList.add("has-media");
-    }, {once:true});
+    }, { once: true });
   }
 }
 
 
 initProfileMedia();
 
-try{
+try {
   setLang(localStorage.getItem("site-language") || "en");
-}catch{
+} catch {
   setLang("en");
 }
 
@@ -522,8 +522,8 @@ const pointer = {
   active: false
 };
 
-function resizeCanvas(){
-  if(!canvas || !ctx) return;
+function resizeCanvas() {
+  if (!canvas || !ctx) return;
 
   dpr = Math.min(window.devicePixelRatio || 1, 2);
   width = window.innerWidth;
@@ -539,14 +539,14 @@ function resizeCanvas(){
   createParticles();
 }
 
-function createParticles(){
+function createParticles() {
   const area = width * height;
 
   const count = width < 720
     ? Math.min(90, Math.max(42, Math.floor(area / 11000)))
     : Math.min(190, Math.max(78, Math.floor(area / 8500)));
 
-  particles = Array.from({length: count}, () => ({
+  particles = Array.from({ length: count }, () => ({
     x: Math.random() * width,
     y: Math.random() * height,
     vx: (Math.random() - 0.5) * 0.35,
@@ -556,26 +556,26 @@ function createParticles(){
   }));
 }
 
-function setPointer(x, y, active = true){
+function setPointer(x, y, active = true) {
   pointer.tx = x;
   pointer.ty = y;
   pointer.active = active;
 }
-function draw(){
-  if(!ctx) return;
+function draw() {
+  if (!ctx) return;
 
   pointer.x += (pointer.tx - pointer.x) * 0.08;
   pointer.y += (pointer.ty - pointer.y) * 0.08;
 
   ctx.clearRect(0, 0, width, height);
 
-  for(const p of particles){
+  for (const p of particles) {
     const dx = p.x - pointer.x;
     const dy = p.y - pointer.y;
     const dist = Math.sqrt(dx * dx + dy * dy);
     const force = Math.max(0, 1 - dist / 180);
 
-    if(force > 0){
+    if (force > 0) {
       const angle = Math.atan2(dy, dx);
       p.x += Math.cos(angle) * force * 0.75;
       p.y += Math.sin(angle) * force * 0.75;
@@ -584,10 +584,10 @@ function draw(){
     p.x += p.vx;
     p.y += p.vy;
 
-    if(p.x < -20) p.x = width + 20;
-    if(p.x > width + 20) p.x = -20;
-    if(p.y < -20) p.y = height + 20;
-    if(p.y > height + 20) p.y = -20;
+    if (p.x < -20) p.x = width + 20;
+    if (p.x > width + 20) p.x = -20;
+    if (p.y < -20) p.y = height + 20;
+    if (p.y > height + 20) p.y = -20;
 
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r + force * 1.2, 0, Math.PI * 2);
@@ -600,18 +600,18 @@ function draw(){
   raf = requestAnimationFrame(draw);
 }
 
-function drawLines(){
+function drawLines() {
   const maxDistance = width < 720 ? 82 : 112;
 
-  for(let i = 0; i < particles.length; i++){
-    for(let j = i + 1; j < particles.length; j++){
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
       const a = particles[i];
       const b = particles[j];
       const dx = a.x - b.x;
       const dy = a.y - b.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      if(dist < maxDistance){
+      if (dist < maxDistance) {
         const opacity = (1 - dist / maxDistance) * 0.09;
 
         ctx.beginPath();
@@ -625,8 +625,8 @@ function drawLines(){
   }
 }
 
-function initBackground(){
-  if(reducedMotion || !canvas || !ctx) return;
+function initBackground() {
+  if (reducedMotion || !canvas || !ctx) return;
 
   resizeCanvas();
   setPointer(width * 0.5, height * 0.5, false);
@@ -636,7 +636,7 @@ function initBackground(){
 
   window.addEventListener("pointermove", event => {
     setPointer(event.clientX, event.clientY, true);
-  }, {passive:true});
+  }, { passive: true });
 
   window.addEventListener("pointerleave", () => {
     setPointer(width * 0.5, height * 0.5, false);
@@ -644,13 +644,13 @@ function initBackground(){
 
   window.addEventListener("touchmove", event => {
     const touch = event.touches[0];
-    if(!touch) return;
+    if (!touch) return;
     setPointer(touch.clientX, touch.clientY, true);
-  }, {passive:true});
+  }, { passive: true });
 }
 
 initBackground();
 
 window.addEventListener("beforeunload", () => {
-  if(raf) cancelAnimationFrame(raf);
+  if (raf) cancelAnimationFrame(raf);
 });

@@ -1,7 +1,7 @@
 {
-  "name": "bhcgo",
-  "short_name": "bhcgo",
-  "description": "Minimal personal portfolio of Ahmet Malal, also known as bhcgo.",
+  "name": "Ahmet",
+  "short_name": "Ahmet",
+  "description": "Ahmet Malal kişisel portfolyosu.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#010101",
