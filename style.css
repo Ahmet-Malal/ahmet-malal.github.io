@@ -573,12 +573,9 @@ button{
   position:absolute;
   inset:0;
   border:0;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(255,255,255,.05),transparent 32%),
-    radial-gradient(circle at 50% 78%,rgba(170,205,255,.035),transparent 38%),
-    rgba(0,0,0,.34);
-  backdrop-filter:blur(14px) saturate(1.12);
-  -webkit-backdrop-filter:blur(14px) saturate(1.12);
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
   cursor:pointer;
 }
 
@@ -587,19 +584,15 @@ button{
   width:min(640px,calc(100vw - 36px));
   max-height:min(760px,calc(100svh - 36px));
   overflow:auto;
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:26px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
   padding:0;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.055) 34%,rgba(255,255,255,.028)),
-    rgba(8,10,15,.30);
+  background:rgba(10,10,15,.6);
   box-shadow:
-    0 28px 90px rgba(0,0,0,.42),
-    0 0 0 1px rgba(255,255,255,.035),
-    inset 0 1px 0 rgba(255,255,255,.22),
-    inset 0 -1px 0 rgba(255,255,255,.045);
-  backdrop-filter:blur(30px) saturate(1.22);
-  -webkit-backdrop-filter:blur(30px) saturate(1.22);
+    0 20px 60px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   color:rgba(255,255,255,.92);
   font-family:"SF Pro Display","SF Pro Text","Inter","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
   isolation:isolate;
@@ -607,7 +600,7 @@ button{
   transform:translateY(18px) scale(.985);
   transition:opacity .24s ease,transform .28s cubic-bezier(.2,.8,.2,1);
   scrollbar-width:thin;
-  scrollbar-color:rgba(255,255,255,.2) transparent;
+  scrollbar-color:rgba(255,255,255,.15) transparent;
 }
 
 .site-window.is-open .window-panel{
@@ -620,20 +613,17 @@ button{
   inset:0;
   z-index:-1;
   border-radius:inherit;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.035) 24%,transparent 58%),
-    radial-gradient(circle at 16% 0%,rgba(255,255,255,.16),transparent 32%),
-    radial-gradient(circle at 88% 12%,rgba(180,215,255,.08),transparent 30%);
+  background:transparent;
   content:"";
-  opacity:.9;
+  opacity:0;
 }
 
 .window-panel::after{
   position:absolute;
-  inset:10px;
+  inset:0;
   z-index:-1;
-  border:1px solid rgba(255,255,255,.04);
-  border-radius:20px;
+  border:none;
+  border-radius:inherit;
   content:"";
   pointer-events:none;
 }
@@ -733,31 +723,31 @@ button{
 
 .window-panel h2{
   margin:0;
-  padding:32px 70px 18px 30px;
-  border-bottom:1px solid rgba(255,255,255,.075);
-  color:rgba(255,255,255,.95);
-  font-size:clamp(26px,3vw,36px);
+  padding:28px 24px 16px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  color:rgba(255,255,255,.94);
+  font-size:clamp(24px,3vw,32px);
   font-weight:600;
-  line-height:1.08;
-  letter-spacing:.035em;
-  text-shadow:0 10px 34px rgba(255,255,255,.08);
+  line-height:1.1;
+  letter-spacing:.02em;
+  text-shadow:none;
 }
 
 .window-copy{
   max-width:none;
   margin:0;
-  padding:18px 30px 0;
-  color:rgba(255,255,255,.72);
-  font-size:13.5px;
+  padding:14px 24px 0;
+  color:rgba(255,255,255,.66);
+  font-size:13px;
   font-weight:500;
-  line-height:1.75;
+  line-height:1.6;
 }
 
 .window-list{
   display:grid;
-  gap:18px;
+  gap:12px;
   margin-top:0;
-  padding:24px 30px 30px;
+  padding:18px 24px 24px;
 }
 
 .window-item{
@@ -765,17 +755,15 @@ button{
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  min-height:56px;
-  border:1px solid rgba(255,255,255,.065);
-  border-radius:16px;
-  padding:0 16px;
-  background:rgba(255,255,255,.025);
-  color:rgba(255,255,255,.68);
+  min-height:52px;
+  border:1px solid rgba(255,255,255,.04);
+  border-radius:14px;
+  padding:0 14px;
+  background:rgba(255,255,255,.01);
+  color:rgba(255,255,255,.65);
   font-size:13px;
   font-weight:500;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.05),
-    0 10px 26px rgba(0,0,0,.08);
+  box-shadow:none;
 }
 
 .window-item strong{

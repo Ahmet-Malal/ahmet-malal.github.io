@@ -125,22 +125,18 @@ const windowData = {
         {
           title: "Odak",
           list: [
-            "Linux sistemleri, a\u011f g\u00fcvenli\u011fi ve siber g\u00fcvenlik temelleri",
-            "CTF pratikleri, zafiyet analizi ve etik hacking yakla\u015f\u0131mlar\u0131",
-            "Zararl\u0131 yaz\u0131l\u0131m davran\u0131\u015flar\u0131, trafik analizi ve teknik ara\u015ft\u0131rma"
+            "Linux sistemleri, ağ güvenliği ve siber güvenlik temelleri",
+            "CTF pratikleri, zafiyet analizi ve etik hacking yaklaşımları",
+            "Zararlı yazılım davranışları, trafik analizi ve teknik araştırma"
           ]
-        },
-        {
-          title: "Teknik Y\u0131\u011f\u0131n",
-          tags: stackBadges
         }
       ]
     },
     contact: {
-      title: "ileti\u015fim",
+      title: "İletişim",
+      copy: "Bana aşağıdaki kanallardan ulaşabilirsin:",
       items: [
-        ["session", "en yakın zamanda"],
-        ["mail", "en yakın zamanda"]
+        ["Session", "example"],
       ]
     }
   },
@@ -156,18 +152,14 @@ const windowData = {
             "CTF practice, vulnerability analysis, and ethical hacking approaches",
             "Malware behavior, traffic analysis, and technical research"
           ]
-        },
-        {
-          title: "Technical Stack",
-          tags: stackBadges
         }
       ]
     },
     contact: {
-      title: "contact",
+      title: "Contact",
+      copy: "You can reach me through the following channels:",
       items: [
-        ["session", "at the soonest time"],
-        ["mail", "at the soonest time"]
+        ["Session", "example"],
       ]
     }
   }

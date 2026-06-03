@@ -1,52 +1,48 @@
 {
   "name": "Ahmet Malal",
-  "short_name": "Ahmet Malal",
-  "description": "Ahmet Malal'ın resmi web sitesi, kişisel portfolyosu, projeleri ve teknik notları.",
+  "short_name": "Ahmet",
+  "description": "A random corner of the internet for things that deserve to exist somewhere.",
   "start_url": "/?source=pwa",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#010101",
   "theme_color": "#010101",
+  "lang": "en",
+  "dir": "ltr",
+
   "icons": [
     {
-      "src": "assets/favicon.ico",
-      "sizes": "192x192 512x512 any",
+      "src": "/assets/favicon.ico",
+      "sizes": "192x192 512x512",
       "type": "image/x-icon",
       "purpose": "any maskable"
     }
   ],
+
   "shortcuts": [
     {
-      "name": "Projeler",
-      "short_name": "Projeler",
-      "description": "Ahmet Malal Projeleri",
-      "url": "/#focus?focus=projects",
+      "name": "Focus",
+      "short_name": "Focus",
+      "description": "Explore focus areas",
+      "url": "/#focus",
       "icons": [
         {
-          "src": "assets/favicon.ico",
+          "src": "/assets/favicon.ico",
           "sizes": "192x192"
         }
       ]
     },
     {
-      "name": "İletişim",
-      "short_name": "İletişim",
-      "description": "Ahmet Malal İletişim",
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch",
       "url": "/#contact",
       "icons": [
         {
-          "src": "assets/favicon.ico",
+          "src": "/assets/favicon.ico",
           "sizes": "192x192"
         }
       ]
     }
-  ],
-  "categories": [
-    "portfolio",
-    "personal",
-    "education",
-    "lifestyle"
-  ],
-  "lang": "tr",
-  "dir": "ltr"
+  ]
 }
